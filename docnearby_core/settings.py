@@ -31,13 +31,32 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
+    # Django core apps
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # Third-party apps
+    'rest_framework',
+    'corsheaders',
+    'rest_framework.authtoken',
+    'allauth', # If using django-allauth
+    'allauth.account', # If using django-allauth
+    'dj_rest_auth', # If using dj-rest-auth
+
+    # Your apps
+    'users.apps.UsersConfig',         # <-- Add this
+    'providers.apps.ProvidersConfig', # <-- Add this
+    'interactions.apps.InteractionsConfig', # <-- Add this
+    'content.apps.ContentConfig',     # <-- Add this
 ]
+
+AUTH_USER_MODEL = 'users.User'
+
+# GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal310.dll'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -47,6 +66,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = "docnearby_core.urls"
