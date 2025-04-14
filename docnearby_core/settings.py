@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',         # <-- Add this
     'providers.apps.ProvidersConfig', # <-- Add this
     'interactions.apps.InteractionsConfig', # <-- Add this
-    'content.apps.ContentConfig',     # <-- Add this
+    'content.apps.ContentConfig',      # <-- Add this
+    'symptoms.apps.SymptomsConfig',
 ]
 
 AUTH_USER_MODEL = 'users.User'
