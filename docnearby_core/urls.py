@@ -15,8 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include # Make sure include is imported
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    # Include DRF authentication URLs (login/logout for browsable API)
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # Include dj-rest-auth URLs (for registration, login, etc.)
+    path('api/auth/', include('dj_rest_auth.urls')),
+    path('api/auth/registration/', include('dj_rest_auth.registration.urls')), # If using registration
+
+    # --- Include your app's API URLs ---
+    path('api/', include('providers.urls')), # Add this line for providers
+    # path('api/', include('users.urls')), # Add later for user-specific endpoints
+    # path('api/', include('interactions.urls')), # Add later for favorites/reviews
+    # path('api/', include('content.urls')), # Add later for content
 ]

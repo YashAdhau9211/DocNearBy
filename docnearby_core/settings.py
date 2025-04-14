@@ -141,3 +141,21 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # Keep SessionAuthentication if you want to use the Browsable API login
+        'rest_framework.authentication.SessionAuthentication',
+        # Add TokenAuthentication for API clients like Postman/mobile apps
+        'rest_framework.authentication.TokenAuthentication',
+        # You might add other methods later (e.g., JWT)
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        # Set a sensible default permission - maybe IsAuthenticatedOrReadOnly?
+        # We override this in the ProviderViewSet anyway using get_permissions()
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10 # Example pagination size
+    # Add other DRF settings as needed
+}
