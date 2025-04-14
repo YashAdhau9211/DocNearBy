@@ -1,0 +1,55 @@
+# backend/requirements.txt
+
+# Core Django Framework
+django>=4.2,<5.0  # Or specify your preferred Django LTS or latest stable version
+
+# Django REST Framework for APIs
+djangorestframework>=3.14,<3.15
+
+# Database Connector (PostgreSQL)
+psycopg2-binary>=2.9,<3.0 # Use psycopg2 if you prefer compiling, but binary is often easier
+
+# Geolocation support within Django (Requires external libraries like GEOS, GDAL installed on the system)
+# Django itself includes contrib.gis - ensure system libraries are installed first.
+# No specific package usually needed here unless doing advanced non-ORM geo ops.
+
+# API Authentication & Authorization (Recommended stack)
+dj-rest-auth>=5.0,<6.0
+django-allauth>=0.58,<0.59 # dj-rest-auth often relies on this
+
+# Handling Cross-Origin Resource Sharing (for Frontend communication)
+django-cors-headers>=4.0,<5.0
+
+# Environment Variable Management (for API keys, secrets)
+python-dotenv>=1.0,<2.0
+
+# HTTP Requests (for potentially calling external AI APIs or Google APIs from backend)
+requests>=2.30,<2.32
+
+# Caching Client (Redis is specified in PRD)
+redis>=5.0,<6.0
+
+# WSGI Server (for production deployment)
+gunicorn>=21.0,<22.0 # Common choice for production
+
+# Utilities (Optional but common)
+# python-slugify # For creating URL slugs if needed
+# Pillow # For handling image uploads if provider profiles have photos
+
+# --- Development & Testing Dependencies ---
+# (Consider putting these in a separate requirements-dev.txt)
+
+# Code Formatting & Linting
+black>=23.0,<24.0
+flake8>=6.0,<7.0
+
+# Testing Framework
+pytest>=7.0,<8.0
+pytest-django>=4.7,<4.8
+# pytest-cov # For test coverage reports
+
+# --- Notes ---
+# 1. Versions: These are examples based on recent stable versions. Adjust as needed or remove pinning (`>=X.Y`) to get the absolute latest (use with caution). Pinning (`==X.Y.Z`) provides reproducibility.
+# 2. GeoDjango System Dependencies: Remember to install GEOS, PROJ, and GDAL libraries on your operating system *before* trying to use GeoDjango features. This is OS-specific (e.g., using apt, yum, brew, or OSGeo4W installer).
+# 3. Database: Ensure PostgreSQL is installed and running.
+# 4. Run `pip install -r requirements.txt` within your activated virtual environment to install these.
