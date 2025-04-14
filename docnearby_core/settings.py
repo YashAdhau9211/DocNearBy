@@ -58,6 +58,11 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'users.User'
 
+# Print emails to the console instead of sending them
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 # GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal310.dll'
 
 MIDDLEWARE = [
@@ -147,9 +152,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # Keep SessionAuthentication if you want to use the Browsable API login
-        'rest_framework.authentication.SessionAuthentication',
+        
         # Add TokenAuthentication for API clients like Postman/mobile apps
         'rest_framework.authentication.TokenAuthentication',
+
+        'rest_framework.authentication.SessionAuthentication',
         # You might add other methods later (e.g., JWT)
     ],
     'DEFAULT_PERMISSION_CLASSES': [

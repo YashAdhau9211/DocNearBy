@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/', include('providers.urls')), # Add this line for providers
     path('api/', include('symptoms.urls')),
     # path('api/', include('interactions.urls')),
+    path('api/', include('content.urls')),
     # path('api/', include('users.urls')), # Add later for user-specific endpoints
     # path('api/', include('interactions.urls')), # Add later for favorites/reviews
     # path('api/', include('content.urls')), # Add later for content
