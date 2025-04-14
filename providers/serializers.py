@@ -26,6 +26,7 @@ class ProviderSerializer(serializers.ModelSerializer):
             'country',
             'latitude',        # Include the lat/lon fields
             'longitude',
+            # 'distance',
             'specialization',
             'services_offered',
             'languages_spoken',
